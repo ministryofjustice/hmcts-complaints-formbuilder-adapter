@@ -95,10 +95,10 @@ workflows:
   version: 2
   release:
     jobs:
-      - test
+      # - test
       - deploy_staging:
-          requires:
-            - test
+          # requires:
+          #   - test
           filters:
             branches:
               only:
