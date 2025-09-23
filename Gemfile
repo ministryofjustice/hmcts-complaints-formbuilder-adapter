@@ -6,7 +6,7 @@ ruby File.read('.ruby-version').strip
 gem 'daemons', '~> 1.4'
 gem 'delayed_job_active_record', '~> 4.1'
 gem 'httparty', '~> 0.21'
-gem 'jwe', '~> 0.4.0'
+gem 'jwe', '~> 1.1.1'
 gem 'jwt', '~> 2.7'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 6.4'

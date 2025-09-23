@@ -137,7 +137,8 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.7.2)
-    jwe (0.4.0)
+    jwe (1.1.1)
+      base64
     jwt (2.8.1)
       base64
     language_server-protocol (3.17.0.3)
@@ -339,7 +340,7 @@ DEPENDENCIES
   factory_bot_rails
   guard-rspec
   httparty (~> 0.21)
-  jwe (~> 0.4.0)
+  jwe (~> 1.1.1)
   jwt (~> 2.7)
   pg (>= 0.18, < 2.0)
   puma (~> 6.4)
