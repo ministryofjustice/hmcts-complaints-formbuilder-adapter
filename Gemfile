@@ -12,8 +12,8 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 6.4'
 gem 'rails', '~> 7.2.3.1'
 gem 'sentry-delayed_job', '~> 5.14'
-gem 'sentry-rails', '~> 5.18'
-gem 'sentry-ruby', '~> 5.18'
+gem 'sentry-rails', '~> 5.28'
+gem 'sentry-ruby', '~> 5.28'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

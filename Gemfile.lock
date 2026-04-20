@@ -368,8 +368,8 @@ DEPENDENCIES
   rubocop (~> 1.64.1)
   rubocop-rspec (~> 2.31.0)
   sentry-delayed_job (~> 5.14)
-  sentry-rails (~> 5.18)
-  sentry-ruby (~> 5.18)
+  sentry-rails (~> 5.28)
+  sentry-ruby (~> 5.28)
   simplecov
   simplecov-console
   spring
