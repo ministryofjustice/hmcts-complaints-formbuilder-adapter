@@ -4,7 +4,7 @@ RSpec.describe SendCommentJob, type: :job do
   describe '#perform_later' do
     it 'queues a job' do
       expect do
-        described_class.perform_later
+        described_class.perform_later(form_builder_payload: {}, api_version: 'v2')
       end.to have_enqueued_job.on_queue(
         'send_comments'
       ).exactly(:once)
