@@ -10,15 +10,15 @@ gem 'jwe', '~> 1.1.1'
 gem 'jwt', '~> 2.7'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 6.4'
-gem 'rails', '~> 7.1.5.2'
+gem 'rails', '~> 7.2.3.1'
 gem 'sentry-delayed_job', '~> 5.14'
-gem 'sentry-rails', '~> 5.15'
-gem 'sentry-ruby', '~> 5.15'
+gem 'sentry-rails', '~> 5.28'
+gem 'sentry-ruby', '~> 5.28'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rubocop'
-  gem 'rubocop-rspec'
+  gem 'rubocop', '~> 1.64.1'
+  gem 'rubocop-rspec', '~> 2.31.0'
 end
 
 group :test do
