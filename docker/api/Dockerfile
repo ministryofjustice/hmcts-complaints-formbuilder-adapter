@@ -1,6 +1,6 @@
-FROM ruby:3.1.3-alpine
+FROM ruby:3.4.10-alpine3.24
 
-RUN apk add build-base postgresql-contrib postgresql-dev bash tzdata
+RUN apk add build-base postgresql-contrib postgresql-dev bash tzdata libcurl curl yaml-dev
 
 ARG UID='1001'
 RUN addgroup -S appgroup && \
@@ -15,7 +15,8 @@ COPY --chown=appuser:appgroup Gemfile Gemfile.lock .ruby-version ./
 
 RUN gem install bundler
 
-ARG BUNDLE_FLAGS="--jobs 2 --no-cache --without development test"
+ENV BUNDLE_WITHOUT="development:test"
+ARG BUNDLE_FLAGS="--jobs 2 --retry=3 --no-cache"
 RUN bundle install ${BUNDLE_FLAGS}
 
 COPY --chown=appuser:appgroup . .

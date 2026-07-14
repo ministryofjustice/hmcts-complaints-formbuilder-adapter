@@ -1,13 +1,13 @@
-FROM ruby:3.1.3-alpine3.17
+FROM ruby:3.4.10-alpine3.24
 
-RUN apk add build-base postgresql-contrib postgresql-dev bash tzdata
+RUN apk add build-base postgresql-contrib postgresql-dev bash tzdata libcurl curl yaml-dev
 
 ARG UID='1001'
 RUN addgroup -S appgroup && \
   adduser -u ${UID} -S appuser -G appgroup
 
 WORKDIR /app
-ENV HOME /app
+ENV HOME=/app
 
 RUN chown appuser:appgroup /app
 
@@ -15,8 +15,12 @@ COPY --chown=appuser:appgroup Gemfile Gemfile.lock .ruby-version ./
 
 RUN gem install bundler
 
-ARG BUNDLE_FLAGS="--jobs 2 --no-cache --without development test"
-RUN bundle install ${BUNDLE_FLAGS}
+RUN bundle config set force_ruby_platform true
+RUN bundle config set deployment true
+RUN bundle config set without 'development'
+ARG BUNDLE_ARGS='--jobs 2 --retry=3'
+RUN bundle install --no-cache ${BUNDLE_ARGS}
+
 
 COPY --chown=appuser:appgroup . .
 
@@ -33,4 +37,4 @@ USER 1001
 ARG RAILS_ENV='production'
 ENV RAILS_ENV=$RAILS_ENV
 
-CMD bin/delayed_job --queues=send_complaints,send_comments,send_feedback,send_enquiries run
+CMD ["bin/delayed_job", "--queues=send_complaints,send_comments,send_feedback,send_enquiries", "run"]
