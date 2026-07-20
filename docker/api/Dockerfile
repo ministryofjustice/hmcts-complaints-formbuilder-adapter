@@ -15,7 +15,9 @@ COPY --chown=appuser:appgroup Gemfile Gemfile.lock .ruby-version ./
 
 RUN gem install bundler
 
-ENV BUNDLE_WITHOUT="development:test"
+ARG BUNDLE_WITHOUT="development"
+RUN bundle config set without ${BUNDLE_WITHOUT}
+
 ARG BUNDLE_FLAGS="--jobs 2 --retry=3 --no-cache"
 RUN bundle install ${BUNDLE_FLAGS}
 
