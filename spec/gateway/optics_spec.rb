@@ -46,7 +46,7 @@ describe Gateway::Optics do
         expect do
           gateway.request_bearer_token(jwt_token: 'foo')
         end.to raise_error(Gateway::Optics::ClientError)
-          .with_message(%r{\[OPTICS API error: Received 401 response, with headers {"error-header"=>\["some message"\]}\] <html>errors return xml body</error>})
+          .with_message(%r{\[OPTICS API error: Received 401 response, with headers \{"error-header"\s*=>\s*\["some message"\]\}\] <html>errors return xml body</error>})
       end
     end
   end
@@ -98,7 +98,7 @@ describe Gateway::Optics do
         expect do
           gateway.post(body: {}, bearer_token: bearer_token)
         end.to raise_error(Gateway::Optics::ClientError)
-          .with_message(%r{\[OPTICS API error: Received 500 response, with headers {"error-header"=>\["some message"\]}\] <html>errors return xml body</error>})
+          .with_message(%r{\[OPTICS API error: Received 500 response, with headers \{"error-header"\s*=>\s*\["some message"\]\}\] <html>errors return xml body</error>})
       end
     end
   end

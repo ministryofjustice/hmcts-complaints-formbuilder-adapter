@@ -15,6 +15,7 @@ services:
         UID: "${UID}"
         RAILS_ENV: "test"
         BUNDLE_FLAGS: '--jobs 2 --no-cache'
+        BUNDLE_WITHOUT: 'development'
     user: "${UID}:${UID}"
     environment:
       DATABASE_URL: "postgres://postgres:password@db/hmcts_complaints_form_builder_adapter"
